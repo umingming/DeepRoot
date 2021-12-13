@@ -4,14 +4,79 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-
+	private static boolean flag;
+	private static String sel;
+	private static String msg;
+	
+	private static Scanner scan;
+	private static Calendar c;
+	
+	static {
+		msg = "";
+		scan = new Scanner(System.in);
+		c = Calendar.getInstance();
+	}
+	
 	public static void main(String[] args) {
-		ascii();
+		try {
+			if(!flag) ascii();
+			boolean loop = true;
+			
+			while(loop) {
+				menu();
+				System.out.println(msg);
+				move();
+				
+				if(sel.equals("B")) {
+					
+				}else if(sel.equals("X")){
+					loop = false;
+				}else if(sel.equals("1")){	
+
+				}else if(sel.equals("2")){	
+
+				}else if(sel.equals("3")){	
+
+				}else {
+					msg = "다시 입력해주세요.";
+					pause();
+				}
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 
 	}
 	
+	
+	
+	private static void move() {
+		System.out.println("-------------------------------------------------------------------------");
+		System.out.println("B. 뒤로 가기 | X. 종료하기");
+		System.out.println("-------------------------------------------------------------------------");
+		select();
+	}
+
+
+	private static void select() {
+		System.out.print("👉 ");
+		sel = scan.nextLine();
+	}
+
+
+
+	private static void pause() {
+		msg += "(엔터를 누르면 메뉴로 이동합니다.)";
+		scan.nextLine();
+	}
+
+	private static void menu() {
+		System.out.println("1. 시작하기");
+		System.out.println("2. 회원 가입");
+		System.out.println("3. 계정 찾기");
+	}
+
 	private static void ascii() {
-		
 		System.out.println("\r\n"
 				+ "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n"
 				+ "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n"
