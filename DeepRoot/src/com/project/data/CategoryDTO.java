@@ -1,13 +1,13 @@
 package com.project.data;
 
-public class Category {
+public class CategoryDTO {
 	private String seq;
 	private String category;
 	
-	public Category() {
+	public CategoryDTO() {
 	}
 
-	public Category(String seq, String category) {
+	public CategoryDTO(String seq, String category) {
 		this.seq = seq;
 		this.category = category;
 	}

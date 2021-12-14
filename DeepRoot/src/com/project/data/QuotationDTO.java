@@ -1,15 +1,15 @@
 package com.project.data;
 
-public class Quotation {
+public class QuotationDTO {
 	private String seq;
 	private String content;
 	private String name;
 	
-	public Quotation() {
+	public QuotationDTO() {
 		this("","","");
 	}
 
-	public Quotation(String seq, String content, String name) {
+	public QuotationDTO(String seq, String content, String name) {
 		this.seq = seq;
 		this.content = content;
 		this.name = name;

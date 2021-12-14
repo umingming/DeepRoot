@@ -1,17 +1,17 @@
 package com.project.data;
 
-public class Question {
+public class QuestionDTO {
 	private String seq;
 	private String categorySeq;
 	private int num;
 	private String question;
 	private String answer;
 	
-	public Question() {
+	public QuestionDTO() {
 		this("","",0,"","");
 	}
 
-	public Question(String seq, String categorySeq, int num, String question, String answer) {
+	public QuestionDTO(String seq, String categorySeq, int num, String question, String answer) {
 		this.seq = seq;
 		this.categorySeq = categorySeq;
 		this.num = num;

@@ -1,6 +1,6 @@
 package com.project.data;
 
-public class Score {
+public class ScoreDTO {
 	private String user;
 	private int num1;
 	private int num2;
@@ -11,11 +11,11 @@ public class Score {
 	private int num7;
 	private int num8;
 	
-	public Score() {
+	public ScoreDTO() {
 		this("",0,0,0,0,0,0,0,0);
 	}
 	
-	public Score(String user, int num1, int num2, int num3, int num4, int num5, int num6, int num7, int num8) {
+	public ScoreDTO(String user, int num1, int num2, int num3, int num4, int num5, int num6, int num7, int num8) {
 		this.user = user;
 		this.num1 = num1;
 		this.num2 = num2;

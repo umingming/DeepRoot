@@ -1,6 +1,6 @@
 package com.project.data;
 
-public class User {
+public class UserDTO {
 	private String seq;
 	private String name;
 	private String id;
@@ -9,11 +9,11 @@ public class User {
 	private String tel;
 	private String school;
 	
-	public User() {
+	public UserDTO() {
 		this("","","","","","","");
 	}
 	
-	public User(String seq, String name, String id, String pw, String ssn, String tel, String school) {
+	public UserDTO(String seq, String name, String id, String pw, String ssn, String tel, String school) {
 		this.seq = seq;
 		this.name = name;
 		this.id = id;

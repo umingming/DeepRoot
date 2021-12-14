@@ -1,20 +1,20 @@
 package com.project.data;
 
-public class WrongAnswer {
+public class StudyDTO {
 	private String seq;
 	private String userSeq;
 	private String quesitonSeq;
-	private String date;
+	private String answer;
 	
-	public WrongAnswer() {
+	public StudyDTO() {
 		this("","","","");
 	}
 
-	public WrongAnswer(String seq, String userSeq, String quesitonSeq, String date) {
+	public StudyDTO(String seq, String userSeq, String quesitonSeq, String answer) {
 		this.seq = seq;
 		this.userSeq = userSeq;
 		this.quesitonSeq = quesitonSeq;
-		this.date = date;
+		this.answer = answer;
 	}
 
 	public String getSeq() {
@@ -41,18 +41,18 @@ public class WrongAnswer {
 		this.quesitonSeq = quesitonSeq;
 	}
 
-	public String getDate() {
-		return date;
+	public String getAnswer() {
+		return answer;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setAnswer(String answer) {
+		this.answer = answer;
 	}
 
 	@Override
 	public String toString() {
-		return "[seq=" + seq + ", userSeq=" + userSeq + ", quesitonSeq=" + quesitonSeq + ", date=" + date
+		return "[seq=" + seq + ", userSeq=" + userSeq + ", quesitonSeq=" + quesitonSeq + ", answer=" + answer
 				+ "]";
 	}
-
+	
 }
