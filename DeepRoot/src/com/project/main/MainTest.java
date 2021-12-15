@@ -1,12 +1,13 @@
 package com.project.main;
 
-import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
 
 import com.project.data.QuotationDAO;
 import com.project.data.QuotationDTO;
 
-public class Main {
+public class MainTest {
 	private static Form form;
 
 	private static Scanner scan;
@@ -78,4 +79,5 @@ public class Main {
 		str[6] = "\t\t\t\t\t\t\t2. 회원 가입";
 		str[7] = "\t\t\t\t\t\t\t3. 계정 찾기";
 	}
+	
 }

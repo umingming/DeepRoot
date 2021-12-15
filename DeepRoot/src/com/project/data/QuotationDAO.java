@@ -16,7 +16,6 @@ public class QuotationDAO implements DAO {
 	public ArrayList load() throws Exception {
 		reader = new BufferedReader(new FileReader(Path.quotation));
 		
-		System.out.println("load");
 		String line = null;
 		while ((line = reader.readLine()) != null) {
 			String[] tmp = line.split("■");
