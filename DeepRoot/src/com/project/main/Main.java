@@ -3,13 +3,12 @@ package com.project.main;
 import java.io.*;
 import java.util.*;
 
-import com.project.data.QuotationDAO;
+import com.project.data.*;
 import com.project.data.QuotationDTO;
 
 public class Main {
 	private static Form form;
 
-	private static Scanner scan;
 	private static Random rnd;
 	private static ArrayList<QuotationDTO> list;
 	
@@ -19,7 +18,6 @@ public class Main {
 	
 	static {
 		form = new Form();
-		scan = new Scanner(System.in);
 		rnd = new Random();
 		str = form.getStr();
 	}
@@ -34,13 +32,9 @@ public class Main {
 				form.getLogo();
 				getQuotation();
 				menu();
-				
-				for(int i=0; i<10; i++) {
-					System.out.println(str[i]);
-				}
-				
+				form.print(str);
 				form.getMenu();
-				sel = form.select();
+				sel = form.input();
 				
 				if(sel.equals("1")) {
 					
@@ -55,7 +49,7 @@ public class Main {
 				System.out.println("\r\n\r\n");
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.getStackTrace();
 		}
 
 	}

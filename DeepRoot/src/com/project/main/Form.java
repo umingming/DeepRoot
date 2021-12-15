@@ -20,13 +20,19 @@ public class Form {
 		return str;
 	}
 	
+	public void print(String[] str) {
+		for(int i=0; i<10; i++) {
+			System.out.println(str[i]);
+		}
+	}
+	
 	public void getMenu() {
 		System.out.println("\n--------------------------------------------------------------------------------------------------------------------------");
 		System.out.println("B. 뒤로 가기 | X. 종료하기");
 		System.out.println("--------------------------------------------------------------------------------------------------------------------------");
 	}
 	
-	public String select() {
+	public String input() {
 		System.out.print("👉 ");
 		return scan.nextLine();
 	}
