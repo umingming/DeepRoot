@@ -1,7 +1,9 @@
 package com.project.data;
 
+import java.util.*;
+
 public interface DAO {
-	public void load() throws Exception;
+	public ArrayList load() throws Exception;
 	public void save() throws Exception;
 	public void insert(Object obj) throws Exception;
 	public void update(String seq) throws Exception;

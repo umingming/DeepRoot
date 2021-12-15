@@ -3,15 +3,15 @@ package com.project.data;
 public class QuestionDTO {
 	private String seq;
 	private String categorySeq;
-	private int num;
+	private String num;
 	private String question;
 	private String answer;
 	
 	public QuestionDTO() {
-		this("","",0,"","");
+		this("","","","","");
 	}
 
-	public QuestionDTO(String seq, String categorySeq, int num, String question, String answer) {
+	public QuestionDTO(String seq, String categorySeq, String num, String question, String answer) {
 		this.seq = seq;
 		this.categorySeq = categorySeq;
 		this.num = num;
@@ -35,11 +35,11 @@ public class QuestionDTO {
 		this.categorySeq = categorySeq;
 	}
 
-	public int getNum() {
+	public String getNum() {
 		return num;
 	}
 
-	public void setNum(int num) {
+	public void setNum(String num) {
 		this.num = num;
 	}
 

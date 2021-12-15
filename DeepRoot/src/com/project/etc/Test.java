@@ -11,6 +11,9 @@ public class Test {
 		CategoryDAO dao = new CategoryDAO();
 		CategoryDTO dto = new CategoryDTO("100","유미 짱");
 		
+		
+//		dao.load();
+////		dao.save();
 		dao.insert(dto);
 		
 		

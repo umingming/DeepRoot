@@ -1,7 +1,7 @@
 package com.project.data;
 
 public class ScoreDTO {
-	private String user;
+	private String userSeq;
 	private int num1;
 	private int num2;
 	private int num3;
@@ -15,8 +15,8 @@ public class ScoreDTO {
 		this("",0,0,0,0,0,0,0,0);
 	}
 	
-	public ScoreDTO(String user, int num1, int num2, int num3, int num4, int num5, int num6, int num7, int num8) {
-		this.user = user;
+	public ScoreDTO(String userSeq, int num1, int num2, int num3, int num4, int num5, int num6, int num7, int num8) {
+		this.userSeq = userSeq;
 		this.num1 = num1;
 		this.num2 = num2;
 		this.num3 = num3;
@@ -27,12 +27,12 @@ public class ScoreDTO {
 		this.num8 = num8;
 	}
 	
-	public String getUser() {
-		return user;
+	public String getUserSeq() {
+		return userSeq;
 	}
 	
-	public void setUser(String user) {
-		this.user = user;
+	public void setUser(String userSeq) {
+		this.userSeq = userSeq;
 	}
 	
 	public int getNum1() {
@@ -101,7 +101,7 @@ public class ScoreDTO {
 
 	@Override
 	public String toString() {
-		return "[user=" + user + ", num1=" + num1 + ", num2=" + num2 + ", num3=" + num3 + ", num4=" + num4
+		return "[userSeq=" + userSeq + ", num1=" + num1 + ", num2=" + num2 + ", num3=" + num3 + ", num4=" + num4
 				+ ", num5=" + num5 + ", num6=" + num6 + ", num7=" + num7 + ", num8=" + num8 + "]";
 	}
 	
