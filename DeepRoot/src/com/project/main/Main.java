@@ -50,9 +50,8 @@ public class Main {
 
 				}else if(sel.equals("X")){
 					loop = false;
-				}else {
-//					str[9] = "\t\t\t\t\t\t입력이 올바르지 않습니다.";
 				}
+				
 				System.out.println("\r\n\r\n");
 			}
 		} catch (Exception e) {
