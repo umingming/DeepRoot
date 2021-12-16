@@ -3,9 +3,11 @@ package com.project.main;
 import java.util.*;
 
 import com.project.data.*;
+import com.project.user.*;
 
 public class Login {
 	private static Form form;
+	private static User user;
 
 	private static Scanner scan;
 	private static ArrayList<UserDTO> list;
@@ -16,6 +18,7 @@ public class Login {
 	
 	static {
 		form = new Form();
+		user = new User();
 		scan = new Scanner(System.in);
 		
 		str = form.getStr();
@@ -37,9 +40,9 @@ public class Login {
 				setPw();
 			} else {
 				if(isVaild()) {
-					loop = false;
+					
 				} else {
-					goMain();
+					loop = false;
 				}
 			}
 			System.out.println("\r\n\r\n");
@@ -49,7 +52,6 @@ public class Login {
 	private void goMain() {
 		str[8] = "\t\t\t\t존재하지 않는 계정입니다. 가입 후 이용해주세요.";
 		form.input();
-		scan.nextLine();
 	}
 
 	private boolean isVaild() throws Exception {
@@ -61,7 +63,6 @@ public class Login {
 				return true;
 			}
 		}
-		
 		return false;
 	}
 

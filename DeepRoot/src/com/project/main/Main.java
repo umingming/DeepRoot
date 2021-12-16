@@ -8,6 +8,7 @@ import com.project.data.QuotationDTO;
 
 public class Main {
 	private static Form form;
+	private static Login login;
 
 	private static Random rnd;
 	private static ArrayList<QuotationDTO> list;
@@ -18,6 +19,7 @@ public class Main {
 	
 	static {
 		form = new Form();
+		login = new Login();
 		rnd = new Random();
 		str = form.getStr();
 	}
@@ -35,15 +37,19 @@ public class Main {
 				form.print(str);
 				form.getMenu();
 				sel = form.input();
+				System.out.println();
+				loop = false;
 				
 				if(sel.equals("1")) {
-					
+					login.login();
 				}else if(sel.equals("2")){	
 					
 				}else if(sel.equals("3")){	
 
-				}else if(sel.equals("X")){
-					loop = false;
+				}else if(sel.equalsIgnoreCase("X")){
+					
+				}else {
+					
 				}
 				
 				System.out.println("\r\n\r\n");
@@ -61,14 +67,14 @@ public class Main {
 		list.stream()
 			.filter(q -> q.getSeq().equals(seq))
 			.forEach(q -> {
-				str[2] = String.format("%70s", q.getContent());
-				str[3] = String.format("%80s-%s-", "", q.getName());
+				str[1] = String.format("%70s", q.getContent());
+				str[2] = String.format("%80s-%s-", "", q.getName());
 			});
 	}
 
 	private static void menu() throws Exception {
-		str[5] = "\t\t\t\t\t\t\t1. 시작하기";
-		str[6] = "\t\t\t\t\t\t\t2. 회원 가입";
-		str[7] = "\t\t\t\t\t\t\t3. 계정 찾기";
+		str[7] = "\t\t\t\t\t\t\t1. 시작하기";
+		str[8] = "\t\t\t\t\t\t\t2. 회원 가입";
+		str[9] = "\t\t\t\t\t\t\t3. 계정 찾기";
 	}
 }
