@@ -8,56 +8,55 @@ import com.project.user.*;
 public class Login {
 	private static Form form;
 	private static User user;
-
-	private static Scanner scan;
-	private static ArrayList<UserDTO> list;
 	
 	private static String id;
 	private static String pw;
+	
 	private static String[] str;
+	private static ArrayList<UserDTO> list;
 	
 	static {
-		id = "";
 		form = new Form();
-		user = new User();
-		scan = new Scanner(System.in);
 	}
 	
 	public void login() throws Exception {
-		boolean loop = true;
 		str = form.getStr();
 		str[3] = "\t\t\t\t\t\t계    정: ";
 		str[5] = "\t\t\t\t\t\t비밀번호: ";
 
-		while(loop) {
-			if(id.equalsIgnoreCase("B")) {
-				break;
-			} else if(id.equalsIgnoreCase("X")) {
-				System.exit(0);
-			}
+		while(true) {
+			menu();
 			
-			form.getLogo();
-			form.print(str);
-			form.getMenu();
-			
-			if(id.equals("")) {
+			if(id == null) {
 				setId();
 			} else if(pw == null) {
 				setPw();
 			} else {
-				if(isVaild()) {
-					
-				} else {
-					str[8] = "\t\t\t\t존재하지 않는 계정입니다. 가입 후 이용해주세요.";
-					id = form.input();
-				}
+				id = form.input();
+			}
+			
+			if(id.equalsIgnoreCase("B")) {
+				break;
+			} else if(id.equalsIgnoreCase("X")) {
+				System.exit(0);
+			} else if(isValid()) {
+				user = new User(id);
+				user.user();
+			} else if(pw != null && !isValid()) {
+				str[8] = "존재하지 않는 계정입니다. 가입 후 이용해주세요.";
 			}
 			
 			System.out.println("\r\n\r\n");
 		}
 	}
 	
-	private boolean isVaild() throws Exception {
+	private void menu() {
+		form.getLogo();
+		form.print(str);
+		form.getMenu();
+	}
+
+	private boolean isValid() throws Exception {
 		list = new UserDAO().load();
 		
 		if(list.stream().anyMatch(u -> u.getId().equals(id))) {
