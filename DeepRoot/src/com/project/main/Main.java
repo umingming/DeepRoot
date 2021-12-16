@@ -18,7 +18,6 @@ public class Main {
 	private static String[] str;
 	
 	static {
-		sel = "";
 		form = new Form();
 		login = new Login();
 		rnd = new Random();
@@ -28,21 +27,9 @@ public class Main {
 		try {
 			if(!flag) form.getAscii();
 			flag = false;
-			boolean loop = true;
 			
-			while(loop) {
-				if(sel.equalsIgnoreCase("X")) {
-					System.exit(0);
-				}
-				
-				str = form.getStr();
-				form.getLogo();
-				getQuotation();
+			while(true) {
 				menu();
-				form.print(str);
-				form.getMenu();
-				sel = form.input();
-				System.out.println();
 				
 				if(sel.equals("1")) {
 					login.login();
@@ -51,7 +38,7 @@ public class Main {
 				}else if(sel.equals("3")){	
 
 				}else if(sel.equalsIgnoreCase("X")){
-					loop = false;
+					System.exit(0);
 				}else {
 					
 				}
@@ -77,8 +64,17 @@ public class Main {
 	}
 
 	private static void menu() throws Exception {
+		str = form.getStr();
+		form.getLogo();
+		getQuotation();
+		
 		str[7] = "\t\t\t\t\t\t\t1. 시작하기";
 		str[8] = "\t\t\t\t\t\t\t2. 회원 가입";
 		str[9] = "\t\t\t\t\t\t\t3. 계정 찾기";
+		
+		form.print(str);
+		form.getMenu();
+		sel = form.input();
+		System.out.println();
 	}
 }
