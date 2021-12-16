@@ -28,12 +28,12 @@ public class Form {
 	
 	public void getMenu() {
 		System.out.println("\n\n\n--------------------------------------------------------------------------------------------------------------------------");
-		System.out.println("B. 뒤로 가기 | X. 종료하기");
+		System.out.println("  B. 뒤로 가기 | X. 종료하기");
 		System.out.println("--------------------------------------------------------------------------------------------------------------------------");
 	}
 	
 	public String input() {
-		System.out.print("👉 ");
+		System.out.print("  👉 ");
 		return scan.nextLine();
 	}
 	

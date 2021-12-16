@@ -17,24 +17,30 @@ public class Login {
 	private static String[] str;
 	
 	static {
+		id = "";
 		form = new Form();
 		user = new User();
 		scan = new Scanner(System.in);
-		
-		str = form.getStr();
-		str[3] = "\t\t\t\t\t\t계    정: ";
-		str[5] = "\t\t\t\t\t\t비밀번호: ";
 	}
 	
 	public void login() throws Exception {
 		boolean loop = true;
-	
+		str = form.getStr();
+		str[3] = "\t\t\t\t\t\t계    정: ";
+		str[5] = "\t\t\t\t\t\t비밀번호: ";
+
 		while(loop) {
+			if(id.equalsIgnoreCase("B")) {
+				break;
+			} else if(id.equalsIgnoreCase("X")) {
+				System.exit(0);
+			}
+			
 			form.getLogo();
 			form.print(str);
 			form.getMenu();
 			
-			if(id == null) {
+			if(id.equals("")) {
 				setId();
 			} else if(pw == null) {
 				setPw();
@@ -42,18 +48,15 @@ public class Login {
 				if(isVaild()) {
 					
 				} else {
-					loop = false;
+					str[8] = "\t\t\t\t존재하지 않는 계정입니다. 가입 후 이용해주세요.";
+					id = form.input();
 				}
 			}
+			
 			System.out.println("\r\n\r\n");
 		}
 	}
 	
-	private void goMain() {
-		str[8] = "\t\t\t\t존재하지 않는 계정입니다. 가입 후 이용해주세요.";
-		form.input();
-	}
-
 	private boolean isVaild() throws Exception {
 		list = new UserDAO().load();
 		

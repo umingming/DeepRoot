@@ -18,10 +18,10 @@ public class Main {
 	private static String[] str;
 	
 	static {
+		sel = "";
 		form = new Form();
 		login = new Login();
 		rnd = new Random();
-		str = form.getStr();
 	}
 	
 	public static void main(String[] args) {
@@ -31,6 +31,11 @@ public class Main {
 			boolean loop = true;
 			
 			while(loop) {
+				if(sel.equalsIgnoreCase("X")) {
+					System.exit(0);
+				}
+				
+				str = form.getStr();
 				form.getLogo();
 				getQuotation();
 				menu();
@@ -38,7 +43,6 @@ public class Main {
 				form.getMenu();
 				sel = form.input();
 				System.out.println();
-				loop = false;
 				
 				if(sel.equals("1")) {
 					login.login();
@@ -47,7 +51,7 @@ public class Main {
 				}else if(sel.equals("3")){	
 
 				}else if(sel.equalsIgnoreCase("X")){
-					
+					loop = false;
 				}else {
 					
 				}
