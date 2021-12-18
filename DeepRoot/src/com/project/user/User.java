@@ -11,6 +11,8 @@ public class User {
 	private static ScoreDTO userScore;
 
 	private static String id;
+	private static int total;
+	private static double score;
 	
 	private static String[] str;
 	private static ArrayList<UserDTO> userList;
@@ -40,15 +42,34 @@ public class User {
 		
 	}
 
-	private void setAchievement(int score, String unit) throws Exception {
+	private void setAchievement(int level, String unit) throws Exception {
 		questionList = new QuestionDAO().load();
+		total = 0;
 		
 		questionList.stream()
 				.filter(q -> q.getCategorySeq().equals(unit))
-//				.mapToInt(QuestionDAO :: getNum)
-//				.
-				
-		userScore.getNum1();
+				.forEach(q -> total = Math.max(total, Integer.parseInt(q.getNum())));
+				//TODO Num을 int 변수로 수정
+		
+		score = (double)level / total;
+		
+		str[3] += getAchievement(score);
+	}
+
+	private String getAchievement(double score) {
+		String tmp = "";
+		
+		if(score < 0.25) {
+			tmp = "⬜";
+		} else if(score < 0.5) {
+			tmp = "▤";
+		} else if(score < 0.75) {
+			tmp = "▦";
+		} else {
+			tmp = "⬛";
+		}
+		
+		return tmp;
 	}
 
 	private void setUser() throws Exception {
