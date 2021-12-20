@@ -68,9 +68,9 @@ public class Main {
 		form.getLogo();
 		getQuotation();
 		
-		str[7] = "\t\t\t\t\t\t\t1. 시작하기";
-		str[8] = "\t\t\t\t\t\t\t2. 회원 가입";
-		str[9] = "\t\t\t\t\t\t\t3. 계정 찾기";
+		str[6] += "\t1. 시작하기";
+		str[7] += "\t2. 회원 가입";
+		str[8] += "\t3. 계정 찾기";
 		
 		form.print(str);
 		form.getMenu();

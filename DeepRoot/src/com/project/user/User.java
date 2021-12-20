@@ -11,6 +11,7 @@ public class User {
 	private static ScoreDTO userScore;
 
 	private static String id;
+	private static String sel;
 	private static int total;
 	private static double score;
 	
@@ -20,7 +21,6 @@ public class User {
 	private static ArrayList<QuestionDTO> questionList;
 	
 	static {
-		form = new Form();
 	}
 	
 	public User(String id) {
@@ -29,17 +29,45 @@ public class User {
 
 	public void user() throws Exception {
 		setUser();
-		str = form.getStr();
 
 		while(true) {
+			form = new Form();
+			str = form.getStr();
 			menu();
+			
+			if(sel.equals("1")) {
+				
+			} else if (sel.equals("2")) {
+				
+			} else if (sel.equals("3")) {
+				
+			} else if (sel.equalsIgnoreCase("B")) {
+				break;
+			} else if(id.equalsIgnoreCase("X")) {
+				System.exit(0);
+			}
 		}
 	}
 
-	private void menu() {
-		str[2] = user.getName() + "님 환영합니다!";
-//		getAchievement();
+	private void menu() throws Exception {
+		form.getLogo();
+		str[2] += "     " + user.getName() + "님 환영합니다!";
+		str[3] += "    ";
+		setAchievement(userScore.getNum1(), "1");
+		setAchievement(userScore.getNum2(), "2");
+		setAchievement(userScore.getNum3(), "3");
+		setAchievement(userScore.getNum4(), "4");
+		setAchievement(userScore.getNum5(), "5");
+		setAchievement(userScore.getNum6(), "6");
+		setAchievement(userScore.getNum7(), "7");
+		setAchievement(userScore.getNum8(), "8");
 		
+		str[6] += "\t1. 계정 관리";
+		str[7] += "\t2. 한국사 학습";
+		str[8] += "\t3. 순위 확인";
+		form.print(str);
+		form.getMenu();
+		sel = form.input();
 	}
 
 	private void setAchievement(int level, String unit) throws Exception {
@@ -49,6 +77,7 @@ public class User {
 		questionList.stream()
 				.filter(q -> q.getCategorySeq().equals(unit))
 				.forEach(q -> total = Math.max(total, Integer.parseInt(q.getNum())));
+		
 				//TODO Num을 int 변수로 수정
 		
 		score = (double)level / total;
@@ -66,10 +95,10 @@ public class User {
 		} else if(score < 0.75) {
 			tmp = "▦";
 		} else {
-			tmp = "⬛";
+			tmp = "■";
 		}
 		
-		return tmp;
+		return tmp + "  ";
 	}
 
 	private void setUser() throws Exception {

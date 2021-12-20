@@ -14,7 +14,7 @@ public class Form {
 	
 	public String[] getStr() {
 		for(int i=0; i<10; i++) {
-			str[i] = "\t\t\t\t\t";
+			str[i] = "\t\t\t\t\t\t";
 		}
 		
 		return str;
