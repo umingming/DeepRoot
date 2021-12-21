@@ -19,7 +19,7 @@ public class MainTest {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		new User("umingming").user();
+		new User("umingming").main();
 		
 	}
 	

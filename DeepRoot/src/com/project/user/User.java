@@ -9,6 +9,7 @@ public class User {
 	private static Form form;
 	private static UserDTO user;
 	private static ScoreDTO userScore;
+	private static AccountManagement management;
 
 	private static String id;
 	private static String sel;
@@ -27,7 +28,7 @@ public class User {
 		this.id = id;
 	}
 
-	public void user() throws Exception {
+	public void main() throws Exception {
 		setUser();
 
 		while(true) {
@@ -36,14 +37,15 @@ public class User {
 			menu();
 			
 			if(sel.equals("1")) {
-				
+				management = new AccountManagement();
+				management.info(user);
 			} else if (sel.equals("2")) {
 				
 			} else if (sel.equals("3")) {
 				
 			} else if (sel.equalsIgnoreCase("B")) {
 				break;
-			} else if(id.equalsIgnoreCase("X")) {
+			} else if(sel.equalsIgnoreCase("X")) {
 				System.exit(0);
 			}
 		}

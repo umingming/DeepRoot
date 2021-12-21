@@ -41,7 +41,7 @@ public class Login {
 				System.exit(0);
 			} else if(isValid()) {
 				user = new User(id);
-				user.user();
+				user.main();
 			} else if(pw != null && !isValid()) {
 				str[8] = "존재하지 않는 계정입니다. 가입 후 이용해주세요.";
 			}
