@@ -37,6 +37,7 @@ public class User {
 			menu();
 			
 			if(sel.equals("1")) {
+				System.out.println("[계정 관리]");
 				management = new AccountManagement();
 				management.info(user);
 			} else if (sel.equals("2")) {

@@ -16,37 +16,60 @@ public class AccountManagement {
 	
 	public void info(UserDTO user) {
 		AccountManagement.user = user;
+		form = new Form();
 		
 		while(true) {
-			form = new Form();
-			menu();
+			str = form.getStr();
+			form.getLogo();
 			
-			if(sel.equals("1")) {
-				
+			if(sel == null) {
+				menu();
+			} else if(sel.equals("1")) {
+				updateSchool();
 			} else if (sel.equals("2")) {
-		
+				updatePw();
 			} else if (sel.equals("3")) {
 				
 			} else if (sel.equalsIgnoreCase("B")) {
 				break;
 			} else if(sel.equalsIgnoreCase("X")) {
 				System.exit(0);
+			} else {
+				checkUpdate();
 			}
+			
 		}
 	}
 
-	private void menu() {
-		str = form.getStr();
-		form.getLogo();
+	private void updatePw() {
+		// TODO Auto-generated method stub
 		
+	}
+
+	private void updateSchool() {
+		str[5] += "    소    속: ";
+		print();
+		str[5] += sel;
+	}
+
+	private void checkUpdate() {
+		str[6] += "정상적으로 변경되었습니다.";
+		print();
+		sel = null;
+	}
+	
+	private void print() {
+		form.print(str);
+		form.getMenu();
+		sel = form.input();
+	}
+	
+	private void menu() {
 		getInfo();
 		str[6] += "\t1. 소속 변경";
 		str[7] += "\t2. 비밀번호 변경";
 		str[8] += "\t3. 탈퇴하기";
-		
-		form.print(str);
-		form.getMenu();
-		sel = form.input();
+		print();
 	}
 
 	private void getInfo() {
@@ -62,5 +85,4 @@ public class AccountManagement {
 		
 		return year + month + date;
 	}
-
 }
