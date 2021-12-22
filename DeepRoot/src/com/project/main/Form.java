@@ -20,6 +20,14 @@ public class Form {
 		return str;
 	}
 	
+	public String mask(String str) {
+		String tmp = "";
+		for(int i=0; i<str.length(); i++) {
+			tmp += "*";
+		}
+		return tmp;
+	}
+	
 	public void print(String[] str) {
 		for(int i=0; i<10; i++) {
 			System.out.println(str[i]);

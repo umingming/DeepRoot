@@ -39,7 +39,7 @@ public class User {
 			if(sel.equals("1")) {
 				System.out.println("[계정 관리]");
 				management = new AccountManagement();
-				management.info(user);
+				management.manage(user);
 			} else if (sel.equals("2")) {
 				
 			} else if (sel.equals("3")) {

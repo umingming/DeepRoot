@@ -9,67 +9,122 @@ public class AccountManagement {
 	private static Form form;
 	private static UserDTO user;
 
-	private static String sel;
+	private static String input;
+	private static String pw;
+	private static String newPw;
 	
 	private static String[] str;
 	private static ArrayList<UserDTO> userList;
 	
-	public void info(UserDTO user) {
+	public void manage(UserDTO user) {
 		AccountManagement.user = user;
 		form = new Form();
 		
 		while(true) {
-			str = form.getStr();
 			form.getLogo();
 			
-			if(sel == null) {
+			if(input == null) {
 				menu();
-			} else if(sel.equals("1")) {
-				updateSchool();
-			} else if (sel.equals("2")) {
+			} else if(input.equals("1")) {
 				updatePw();
-			} else if (sel.equals("3")) {
+			} else if (input.equals("2")) {
 				
-			} else if (sel.equalsIgnoreCase("B")) {
+			} else if (input.equalsIgnoreCase("B")) {
 				break;
-			} else if(sel.equalsIgnoreCase("X")) {
+			} else if(input.equalsIgnoreCase("X")) {
 				System.exit(0);
-			} else {
-				checkUpdate();
 			}
 			
 		}
 	}
-
+	
 	private void updatePw() {
-		// TODO Auto-generated method stub
+		if(pw == null) {
+			setPw();
+		} else if(isPwRight()) {
+			if(newPw == null) {
+				setNewPw();
+			} else {
+				checkPw();
+			}
+		} else {
+			print();
+			input = form.input();
+			input = null;
+			pw = null;
+			newPw = null;
+		}
+	}
+	
+	private void checkPw() {
+		print();
+		pw = form.input();
+		str[6] += form.mask(pw);
 		
+		if(pw.equals(newPw)) {
+			user.setPw(newPw);
+			str[8] += "정상적으로 변경되었습니다.";
+		} else {
+			str[8] += "입력이 일치하지 않습니다.";
+		}
+	}
+
+	private void setPw() {
+		str = form.getStr();
+		str[3] += "현재 비밀번호: ";
+		print();
+		pw = form.input();
+		
+		for(int i=0; i<pw.length(); i++) {
+			str[3] += "*";
+		}
+	}
+
+	private boolean isPwRight() {
+		if(pw.equals(user.getPw())) {
+			return true;
+		} else {
+			str[7] += "입력이 일치하지 않습니다.";
+			return false;
+		}
+	}
+
+	private void setNewPw() {
+		str[5] += "    비밀번호: ";
+		print();
+		newPw = form.input();
+		
+		for(int i=0; i<newPw.length(); i++) {
+			str[5] += "*";
+		}
+		str[6] += "    확    인: ";
 	}
 
 	private void updateSchool() {
-		str[5] += "    소    속: ";
+		str = form.getStr();
+		str[5] += "속: ";
 		print();
-		str[5] += sel;
+		str[5] += input;
 	}
 
 	private void checkUpdate() {
-		str[6] += "정상적으로 변경되었습니다.";
+		str[7] += "  정상적으로 변경되었습니다.";
 		print();
-		sel = null;
+		input = null;
 	}
 	
 	private void print() {
 		form.print(str);
 		form.getMenu();
-		sel = form.input();
 	}
 	
 	private void menu() {
+		str = form.getStr();
 		getInfo();
-		str[6] += "\t1. 소속 변경";
-		str[7] += "\t2. 비밀번호 변경";
-		str[8] += "\t3. 탈퇴하기";
+		str[6] += "\t1. 비밀번호 변경";
+		str[7] += "\t2. 탈퇴하기";
 		print();
+		input = form.input();
 	}
 
 	private void getInfo() {
