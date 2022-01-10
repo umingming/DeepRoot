@@ -41,6 +41,7 @@ public class User {
 				management = new AccountManagement();
 				management.manage(user);
 			} else if (sel.equals("2")) {
+				System.out.println("[한국사 학습]");
 				
 			} else if (sel.equals("3")) {
 				
