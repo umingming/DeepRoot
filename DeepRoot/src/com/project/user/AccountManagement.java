@@ -1,6 +1,7 @@
 package com.project.user;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import com.project.data.*;
 import com.project.main.*;
@@ -13,8 +14,13 @@ public class AccountManagement {
 	private static String pw;
 	private static String newPw;
 	
+	private static Scanner scan;
 	private static String[] str;
 	private static ArrayList<UserDTO> userList;
+	
+	static {
+		scan = new Scanner(System.in);
+	}
 	
 	public void manage(UserDTO user) {
 		AccountManagement.user = user;
@@ -28,7 +34,7 @@ public class AccountManagement {
 			} else if(input.equals("1")) {
 				updatePw();
 			} else if (input.equals("2")) {
-				
+				delete();
 			} else if (input.equalsIgnoreCase("B")) {
 				break;
 			} else if(input.equalsIgnoreCase("X")) {
@@ -38,8 +44,30 @@ public class AccountManagement {
 		}
 	}
 	
+	private void delete() {
+		if (input.equalsIgnoreCase("B")) {
+			return;
+		} else if(input.equalsIgnoreCase("X")) {
+			System.exit(0);
+		} else if(pw == null) {
+			setPw();
+		} else if(isPwRight()) {
+			str = form.getStr();
+			str[6] += "탈퇴가 정상적으로 처리되었습니다.";
+			print();
+			form.input();
+			new Main().main(null);
+		}
+		
+		
+	}
+
 	private void updatePw() {
-		if(pw == null) {
+		if (input.equalsIgnoreCase("B")) {
+			return;
+		} else if(input.equalsIgnoreCase("X")) {
+			System.exit(0);
+		} else if(pw == null) {
 			setPw();
 		} else if(isPwRight()) {
 			if(newPw == null) {
@@ -98,13 +126,6 @@ public class AccountManagement {
 			str[5] += "*";
 		}
 		str[6] += "    확    인: ";
-	}
-
-	private void updateSchool() {
-		str = form.getStr();
-		str[5] += "속: ";
-		print();
-		str[5] += input;
 	}
 
 	private void checkUpdate() {
