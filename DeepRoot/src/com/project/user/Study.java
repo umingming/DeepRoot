@@ -67,22 +67,28 @@ public class Study {
 		str[8] = "\t\t\t\t7. 일제 강점기 \t\t 8. 현대";
 		print();
 		String category = form.input();
-		setQuestion(category);
+		setProgress(category);
 	}
 	
-	private void setQuestion(String category) throws Exception {
+	private void setProgress(String category) throws Exception {
 		studyList = new StudyDAO().load();
 		studyList.stream()
 				 .filter(s -> s.getUserSeq().equals(user.getSeq()))
 				 .forEach(s -> index = Math.max(index,  Integer.parseInt(s.getQuesitonSeq())));
 		
-		getQuestion(index);
+		getProgress(index);
 	}
 
-	private void getQuestion(int index) {
+	private void getProgress(int index) {
 		str = form.getStr();
+		int temp = 5;
+
 		for(int i=0; i<index; i++) {
-			str[6] += (i+1) + "\t";
+			if(i%20 == 0) {
+				temp++;
+				str[temp] = "\t\t   ";
+			}
+			str[temp] += String.format("%4d", i+1);
 		}
 		
 		form.getLogo();
