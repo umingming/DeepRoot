@@ -3,6 +3,11 @@ package com.project.user;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.project.data.QuestionDTO;
+import com.project.data.ScoreDAO;
+import com.project.data.StudyDAO;
+import com.project.data.StudyDTO;
+import com.project.data.UserDAO;
 import com.project.data.UserDTO;
 import com.project.main.Form;
 import com.project.main.Main;
@@ -14,16 +19,17 @@ public class Study {
 	private static String input;
 	private static String pw;
 	private static String newPw;
+	private static int index;
 	
 	private static Scanner scan;
 	private static String[] str;
-	private static ArrayList<UserDTO> userList;
+	private static ArrayList<StudyDTO> studyList;
 	
 	static {
 		scan = new Scanner(System.in);
 	}
 	
-	public void select(UserDTO user) {
+	public void select(UserDTO user) throws Exception {
 		Study.user = user;
 		form = new Form();
 		
@@ -33,7 +39,7 @@ public class Study {
 			if(input == null) {
 				menu();
 			} else if(input.equals("1")) {
-				solveQuestion();
+				setCategory();
 			} else if (input.equals("2")) {
 				correctAnswer();
 			} else if (input.equalsIgnoreCase("B")) {
@@ -50,101 +56,40 @@ public class Study {
 		
 	}
 
-	private void solveQuestion() {
-		// TODO Auto-generated method stub
-		
+	private void solveQuestion() throws Exception {
+		setCategory();
 	}
 
-	private void delete() {
-		if (input.equalsIgnoreCase("B")) {
-			return;
-		} else if(input.equalsIgnoreCase("X")) {
-			System.exit(0);
-		} else if(pw == null) {
-			setPw();
-		} else if(isPwRight()) {
-			str = form.getStr();
-			str[6] += "탈퇴가 정상적으로 처리되었습니다.";
-			print();
-			form.input();
-			new Main().main(null);
-		}
-		
-		
-	}
-
-	private void updatePw() {
-		if (input.equalsIgnoreCase("B")) {
-			return;
-		} else if(input.equalsIgnoreCase("X")) {
-			System.exit(0);
-		} else if(pw == null) {
-			setPw();
-		} else if(isPwRight()) {
-			if(newPw == null) {
-				setNewPw();
-			} else {
-				checkPw();
-			}
-		} else {
-			print();
-			input = form.input();
-			input = null;
-			pw = null;
-			newPw = null;
-		}
-	}
-	
-	private void checkPw() {
-		print();
-		pw = form.input();
-		str[6] += form.mask(pw);
-		
-		if(pw.equals(newPw)) {
-			user.setPw(newPw);
-			str[8] += "정상적으로 변경되었습니다.";
-		} else {
-			str[8] += "입력이 일치하지 않습니다.";
-		}
-	}
-
-	private void setPw() {
+	private void setCategory() throws Exception {
 		str = form.getStr();
-		str[3] += "현재 비밀번호: ";
+		str[6] = "\t\t\t\t1. 선사시대 \t\t 2. 고대 \t\t 3. 고려";
+		str[7] = "\t\t\t\t4. 조선 전기 \t\t 5. 조선 후기 \t\t 6. 개항기";
+		str[8] = "\t\t\t\t7. 일제 강점기 \t\t 8. 현대";
 		print();
-		pw = form.input();
-		
-		for(int i=0; i<pw.length(); i++) {
-			str[3] += "*";
-		}
-	}
-
-	private boolean isPwRight() {
-		if(pw.equals(user.getPw())) {
-			return true;
-		} else {
-			str[7] += "입력이 일치하지 않습니다.";
-			return false;
-		}
-	}
-
-	private void setNewPw() {
-		str[5] += "    비밀번호: ";
-		print();
-		newPw = form.input();
-		
-		for(int i=0; i<newPw.length(); i++) {
-			str[5] += "*";
-		}
-		str[6] += "    확    인: ";
-	}
-
-	private void checkUpdate() {
-		str[7] += "  정상적으로 변경되었습니다.";
-		print();
-		input = null;
+		String category = form.input();
+		setQuestion(category);
 	}
 	
+	private void setQuestion(String category) throws Exception {
+		studyList = new StudyDAO().load();
+		studyList.stream()
+				 .filter(s -> s.getUserSeq().equals(user.getSeq()))
+				 .forEach(s -> index = Math.max(index,  Integer.parseInt(s.getQuesitonSeq())));
+		
+		getQuestion(index);
+	}
+
+	private void getQuestion(int index) {
+		str = form.getStr();
+		for(int i=0; i<index; i++) {
+			str[6] += (i+1) + "\t";
+		}
+		
+		form.getLogo();
+		print();
+		input = form.input();
+	}
+
 	private void print() {
 		form.print(str);
 		form.getMenu();
@@ -152,25 +97,12 @@ public class Study {
 	
 	private void menu() {
 		str = form.getStr();
-		getInfo();
-		str[6] += "\t1. 비밀번호 변경";
-		str[7] += "\t2. 탈퇴하기";
+		str[5] += "\t1. 문제 풀기";
+		str[6] += "\t2. 오답 공책";
+		
 		print();
 		input = form.input();
 	}
 
-	private void getInfo() {
-		str[1] += "    이    름: " + user.getName();
-		str[2] += "    생년월일: " + getBirthdate();
-		str[3] += "    소    속: " + user.getSchool();
-	}
-
-	private String getBirthdate() {
-		String year = user.getSsn().substring(0, 2) + "년 ";
-		String month = user.getSsn().substring(2, 4) + "월 ";
-		String date = user.getSsn().substring(4, 6) + "일 ";
-		
-		return year + month + date;
-	}
 }
 

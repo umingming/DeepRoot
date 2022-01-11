@@ -10,6 +10,7 @@ public class User {
 	private static UserDTO user;
 	private static ScoreDTO userScore;
 	private static AccountManagement management;
+	private static Study study;
 
 	private static String id;
 	private static String sel;
@@ -40,8 +41,11 @@ public class User {
 				System.out.println("[계정 관리]");
 				management = new AccountManagement();
 				management.manage(user);
+				
 			} else if (sel.equals("2")) {
 				System.out.println("[한국사 학습]");
+				study = new Study();
+				study.select(user);
 				
 			} else if (sel.equals("3")) {
 				
