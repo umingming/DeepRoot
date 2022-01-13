@@ -3,6 +3,7 @@ package com.project.user;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.project.data.QuestionDAO;
 import com.project.data.QuestionDTO;
 import com.project.data.ScoreDAO;
 import com.project.data.StudyDAO;
@@ -15,15 +16,19 @@ import com.project.main.Main;
 public class Study {
 	private static Form form;
 	private static UserDTO user;
+	private static QuestionDTO question;
 
 	private static String input;
 	private static String pw;
 	private static String newPw;
+	private static String category;
+	private static String questionNum;
 	private static int index;
 	
 	private static Scanner scan;
 	private static String[] str;
 	private static ArrayList<StudyDTO> studyList;
+	private static ArrayList<QuestionDTO> questionList;
 	
 	static {
 		scan = new Scanner(System.in);
@@ -66,7 +71,7 @@ public class Study {
 		str[7] = "\t\t\t\t4. 조선 전기 \t\t 5. 조선 후기 \t\t 6. 개항기";
 		str[8] = "\t\t\t\t7. 일제 강점기 \t\t 8. 현대";
 		print();
-		String category = form.input();
+		category = form.input();
 		setProgress(category);
 	}
 	
@@ -76,14 +81,14 @@ public class Study {
 				 .filter(s -> s.getUserSeq().equals(user.getSeq()))
 				 .forEach(s -> index = Math.max(index,  Integer.parseInt(s.getQuesitonSeq())));
 		
-		getProgress(index);
+		getProgress();
 	}
 
-	private void getProgress(int index) {
+	private void getProgress() throws Exception {
 		str = form.getStr();
 		int temp = 5;
 
-		for(int i=0; i<index; i++) {
+		for(int i=0; i<index+1; i++) {
 			if(i%20 == 0) {
 				temp++;
 				str[temp] = "\t\t   ";
@@ -91,6 +96,24 @@ public class Study {
 			str[temp] += String.format("%4d", i+1);
 		}
 		
+		form.getLogo();
+		print();
+		questionNum = form.input();
+		setQuestion();
+	}
+
+	private void setQuestion() throws Exception {
+		questionList = new QuestionDAO().load();
+		
+		questionList.stream()
+					.filter(q -> q.getNum().equals(questionNum))
+					.forEach(q -> question = q);
+		getQuestion(question);
+	}
+	
+	private void getQuestion(QuestionDTO question) throws Exception {
+		str = form.getStr();
+		str[5] = String.format("%70s", question.getQuestion());
 		form.getLogo();
 		print();
 		input = form.input();
