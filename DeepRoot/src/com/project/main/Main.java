@@ -10,6 +10,7 @@ public class Main {
 	private static Form form;
 	private static Login login;
 
+	private static Scanner scan;
 	private static Random rnd;
 	private static ArrayList<QuotationDTO> list;
 	
@@ -18,6 +19,7 @@ public class Main {
 	private static String[] str;
 	
 	static {
+		scan = new Scanner(System.in);
 		form = new Form();
 		login = new Login();
 		rnd = new Random();
@@ -32,6 +34,7 @@ public class Main {
 				menu();
 				
 				if(sel.equals("1")) {
+					System.out.println("\r\n[시작하기]");
 					login.login();
 				}else if(sel.equals("2")){	
 					
@@ -66,6 +69,8 @@ public class Main {
 	private static void menu() throws Exception {
 		str = form.getStr();
 		form.getLogo();
+
+		scan.nextLine();
 		getQuotation();
 		
 		str[6] += "\t1. 시작하기";

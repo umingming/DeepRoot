@@ -43,7 +43,7 @@ public class User {
 				management.manage(user);
 				
 			} else if (sel.equals("2")) {
-				System.out.println("[한국사 학습]");
+				System.out.println("\r\n[한국사 학습]");
 				study = new Study();
 				study.select(user);
 				

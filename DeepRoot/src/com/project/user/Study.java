@@ -5,13 +5,10 @@ import java.util.Scanner;
 
 import com.project.data.QuestionDAO;
 import com.project.data.QuestionDTO;
-import com.project.data.ScoreDAO;
 import com.project.data.StudyDAO;
 import com.project.data.StudyDTO;
-import com.project.data.UserDAO;
 import com.project.data.UserDTO;
 import com.project.main.Form;
-import com.project.main.Main;
 
 public class Study {
 	private static Form form;
@@ -40,7 +37,6 @@ public class Study {
 		
 		while(true) {
 			form.getLogo();
-			
 			if(input == null) {
 				menu();
 			} else if(input.equals("1")) {
@@ -116,7 +112,39 @@ public class Study {
 		str[5] = String.format("%70s", question.getQuestion());
 		form.getLogo();
 		print();
-		input = form.input();
+		setAnswer(form.input());
+	}
+
+	private void setAnswer(String input) throws Exception {
+		str = form.getStr();
+		if(input.equals(question.getAnswer())){
+			str[4] += "\t정답입니다!";
+			clear();
+		} else {
+			str[4] += "\t오답입니다.";
+		}
+		form.getLogo();
+		str[6] = String.format("%70s", getAnswer());
+		print();
+		form.input();
+		
+		getProgress();
+	}
+
+	private String getAnswer() {
+		String tmp = question.getQuestion();
+		String answer = question.getAnswer();
+		String blank = "";
+		
+		for(int i=0; i<answer.length(); i++) {
+			blank += "ㅇ";
+		}
+		return tmp.replace(blank, answer);
+	}
+
+	private void clear() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	private void print() {
