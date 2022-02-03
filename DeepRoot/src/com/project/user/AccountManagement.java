@@ -27,6 +27,7 @@ public class AccountManagement {
 		form = new Form();
 		
 		while(true) {
+			System.out.println("\r\n\r\n\r\n[계정 관리]\r\n\r\n\r\n");
 			form.getLogo();
 			
 			if(input == null) {

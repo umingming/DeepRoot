@@ -34,7 +34,7 @@ public class Main {
 				menu();
 				
 				if(sel.equals("1")) {
-					System.out.println("\r\n[시작하기]");
+					System.out.println("\r\n\r\n\r\n[계정 입력]\r\n\r\n\r\n");
 					login.login();
 				}else if(sel.equals("2")){	
 					

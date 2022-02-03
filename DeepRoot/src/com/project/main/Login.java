@@ -40,6 +40,7 @@ public class Login {
 			} else if(id.equalsIgnoreCase("X")) {
 				System.exit(0);
 			} else if(isValid()) {
+				System.out.println("\r\n\r\n\r\n[회원]\r\n\r\n\r\n");
 				user = new User(id);
 				user.main();
 			} else if(pw != null && !isValid()) {
@@ -51,6 +52,7 @@ public class Login {
 	}
 	
 	private void menu() {
+		System.out.println("\r\n\r\n\r\n[계정 입력]\r\n\r\n\r\n");
 		form.getLogo();
 		form.print(str);
 		form.getMenu();

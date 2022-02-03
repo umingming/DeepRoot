@@ -33,17 +33,18 @@ public class User {
 		setUser();
 
 		while(true) {
+			System.out.println("\r\n\r\n\r\n[회원]\r\n\r\n\r\n");
 			form = new Form();
 			str = form.getStr();
 			menu();
 			
 			if(sel.equals("1")) {
-				System.out.println("[계정 관리]");
+				System.out.println("\r\n\r\n\r\n[계정 관리]\r\n\r\n\r\n");
 				management = new AccountManagement();
 				management.manage(user);
 				
 			} else if (sel.equals("2")) {
-				System.out.println("\r\n[한국사 학습]");
+				System.out.println("\r\n\r\n\r\n[한국사 학습]\r\n\r\n\r\n");
 				study = new Study();
 				study.select(user);
 				

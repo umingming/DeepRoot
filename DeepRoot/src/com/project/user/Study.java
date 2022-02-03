@@ -36,6 +36,7 @@ public class Study {
 		form = new Form();
 		
 		while(true) {
+			System.out.println("\r\n\r\n\r\n[한국사 학습]\r\n\r\n\r\n");
 			form.getLogo();
 			if(input == null) {
 				menu();
@@ -91,7 +92,7 @@ public class Study {
 			}
 			str[temp] += String.format("%4d", i+1);
 		}
-		
+		System.out.println("\r\n\r\n\r\n[한국사 학습]\r\n\r\n\r\n");
 		form.getLogo();
 		print();
 		questionNum = form.input();
@@ -110,6 +111,7 @@ public class Study {
 	private void getQuestion(QuestionDTO question) throws Exception {
 		str = form.getStr();
 		str[5] = String.format("%70s", question.getQuestion());
+		System.out.println("\r\n\r\n\r\n[한국사 학습]\r\n\r\n\r\n");
 		form.getLogo();
 		print();
 		setAnswer(form.input());
@@ -119,10 +121,12 @@ public class Study {
 		str = form.getStr();
 		if(input.equals(question.getAnswer())){
 			str[4] += "\t정답입니다!";
+			index ++;
 			clear();
 		} else {
 			str[4] += "\t오답입니다.";
 		}
+		System.out.println("\r\n\r\n\r\n[한국사 학습]\r\n\r\n\r\n");
 		form.getLogo();
 		str[6] = String.format("%70s", getAnswer());
 		print();
