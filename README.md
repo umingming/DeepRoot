@@ -9,7 +9,7 @@
 * [📖 Introduction](#-introduction)
 * [💻 Result](#-result)
 * [🔎 Detail](#-detail)
-* [✔ TO DO](#-TO-DO)
+* [✔ TO DO](#-to-do)
 
 <br />
 <br />
@@ -55,7 +55,6 @@
 <br />
 
 # ✔ TO DO
-
 <br />
 <br />
 <br />
