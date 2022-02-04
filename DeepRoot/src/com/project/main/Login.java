@@ -36,6 +36,7 @@ public class Login {
 			}
 			
 			if(id.equalsIgnoreCase("B")) {
+				System.out.println("\r\n\r\n\r\n\r\n\r\n\r\n\r\n");
 				break;
 			} else if(id.equalsIgnoreCase("X")) {
 				System.exit(0);
@@ -44,10 +45,10 @@ public class Login {
 				user = new User(id);
 				user.main();
 			} else if(pw != null && !isValid()) {
-				str[8] = "존재하지 않는 계정입니다. 가입 후 이용해주세요.";
+				str[8] = "\t\t\t\t\t존재하지 않는 계정입니다. 가입 후 이용해주세요.";
 			}
 			
-			System.out.println("\r\n\r\n");
+			System.out.println("\r\n\r\n\r\n\r\n\r\n\r\n\r\n");
 		}
 	}
 	
